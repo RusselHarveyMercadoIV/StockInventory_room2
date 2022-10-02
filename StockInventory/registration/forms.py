@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from registration.models import User, Customer, Employee
+from .models import *
 
 class RegisterCustomerForm(ModelForm):
     type = 'C'
@@ -20,3 +20,8 @@ class RegisterEmployeeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
+
+class SalesForm(ModelForm):
+    class Meta:
+        model = Sales
+        fields = '__all__'

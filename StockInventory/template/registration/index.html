@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>Welcome!</h1>
-    <h2>Register as Customer, type /register_c</h2>
-    <h2>Register as Employee, type /register_e</h2>
+    <h2>Register as?</h2>
+    <a href="{% url 'registration:register_customer' %}">Customer</a>
+    <a href="{% url 'registration:register_employee' %}">Employee</a>
 </body>
 </html>

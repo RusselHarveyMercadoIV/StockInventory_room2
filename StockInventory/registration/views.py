@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from registration.forms import RegisterCustomerForm, RegisterEmployeeForm
+from registration.models import *
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'registration/index.html')
+
+def user_home(request):
+    return render(request, 'registration/user_home.html')
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
@@ -33,13 +39,13 @@ class RegisterEmployee(View):
         self.form = RegisterEmployeeForm(request.POST)
         if self.form.is_valid():
             self.form.save()
+            return user_home(request)
         else:
             print("unsucessful")
         return index(request)
 
-
- class Login(View):
-    template = 'Login/login.html'
+class Login(View):
+    template = 'registration/login.html'
 
     def get(self, request):
         return render(request, self.template)
@@ -54,7 +60,7 @@ class RegisterEmployee(View):
                 request.session['username'] = user.username
                 request.session['type'] = user.type
                 return redirect(reverse('registration:index'))
-            except User.DoesNotExist:
-                user = None
+        except User.DoesNotExist:
+            user = None
 
-                return render(request, self.template,{'msg':'Incorrect username/ password.'})
+        return render(request, self.template,{'msg':'Incorrect username/ password.'})
