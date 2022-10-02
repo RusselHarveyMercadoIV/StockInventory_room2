@@ -38,4 +38,23 @@ class RegisterEmployee(View):
         return index(request)
 
 
- 
+ class Login(View):
+    template = 'Login/login.html'
+
+    def get(self, request):
+        return render(request, self.template)
+
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+
+        try:
+            user = User.objects.get(pk=username)
+            if user.password == password:
+                request.session['username'] = user.username
+                request.session['type'] = user.type
+                return redirect(reverse('registration:index'))
+            except User.DoesNotExist:
+                user = None
+
+                return render(request, self.template,{'msg':'Incorrect username/ password.'})
