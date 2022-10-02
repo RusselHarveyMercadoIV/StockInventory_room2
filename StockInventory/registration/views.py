@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, Login
+from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, Login, SupplierForm
 from registration.models import *
 
 # Create your views here.
@@ -66,3 +66,16 @@ class Login(View):
             user = None
 
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
+
+class Supplier(View):
+    template = 'supplier'
+    form = SupplierForm()
+
+    def get(self,request):
+        return render(request,self.template,{'form': self.form})
+
+
+
+
+
+

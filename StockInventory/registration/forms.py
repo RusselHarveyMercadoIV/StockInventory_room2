@@ -38,11 +38,13 @@ class Login(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 class Supplier(forms.Form):
-    product_ID = forms.AutoField(widget = forms.NumberInput())
-    prodName = forms.CharField(widget = forms.TextInput())
-    prodQty = forms.IntegerField(widget= forms.NumberInput)
-    prodPrice = forms.IntegerField(widget = forms.IntegerField())
-    supplier_ID = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    supplier_ID = forms.AutoField(widget=forms.NumberInput)
+    companyName = forms.CharField(widget=forms.TextInput)
+    address = forms.CharField(wdget=forms.TextInput)
+    contact = forms.CharField(widget=forms.TextInput)
+
     class Meta: Supplier
     fields = '__all__'
+
+
 
