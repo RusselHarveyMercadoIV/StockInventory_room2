@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import *
 
+
 class RegisterCustomerForm(ModelForm):
     type = 'C'
     password = forms.CharField(widget=forms.PasswordInput())
@@ -12,6 +13,7 @@ class RegisterCustomerForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegisterCustomerForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
+
 
 class RegisterEmployeeForm(ModelForm):
     type = 'E'
@@ -24,10 +26,12 @@ class RegisterEmployeeForm(ModelForm):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
 
+
 class SalesForm(ModelForm):
     class Meta:
         model = Sales
         fields = '__all__'
+
 
 class Login(forms.Form):
     username = forms.CharField(widget=forms.TextInput())

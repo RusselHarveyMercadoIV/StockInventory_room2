@@ -44,6 +44,7 @@ class RegisterEmployee(View):
             print("unsucessful")
         return index(request)
 
+
 class Login(View):
     template = 'registration/login.html'
     form = Login()
