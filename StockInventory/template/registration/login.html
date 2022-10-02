@@ -6,17 +6,17 @@
 </head>
 <body>
     <h1> Login Account </h1>
-    <div class = "container"
-    <form  method="POST">
-     {{form.as_p}}
-     {% csrf_token %}
-
-     <pre>
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="Submit" value="Login">
-    </pre>
-</form>
-</div>
+    <div>
+        {% if msg != '' %}
+            {{msg}}
+        {% endif %}
+    </div>
+    <div class = "container">
+        <form  method="POST">
+             {{login.as_p}}
+             {% csrf_token %}
+            <input type="Submit" value="Login">
+        </form>
+    </div>
 </body>
 </html>

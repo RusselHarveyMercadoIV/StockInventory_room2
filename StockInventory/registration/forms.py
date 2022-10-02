@@ -1,8 +1,10 @@
 from django.forms import ModelForm
+from django import forms
 from .models import *
 
 class RegisterCustomerForm(ModelForm):
     type = 'C'
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = Customer
         exclude = ['type']
@@ -13,6 +15,7 @@ class RegisterCustomerForm(ModelForm):
 
 class RegisterEmployeeForm(ModelForm):
     type = 'E'
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = Employee
         exclude = ['type']
@@ -25,3 +28,7 @@ class SalesForm(ModelForm):
     class Meta:
         model = Sales
         fields = '__all__'
+
+class Login(forms.Form):
+    username = forms.CharField(widget=forms.TextInput())
+    password = forms.CharField(widget=forms.PasswordInput())

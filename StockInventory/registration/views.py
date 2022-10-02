@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from registration.forms import RegisterCustomerForm, RegisterEmployeeForm
+from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, Login
 from registration.models import *
 
 # Create your views here.
@@ -39,27 +39,28 @@ class RegisterEmployee(View):
         self.form = RegisterEmployeeForm(request.POST)
         if self.form.is_valid():
             self.form.save()
-            return user_home(request)
+            return redirect(reverse('registration:login'))
         else:
             print("unsucessful")
         return index(request)
 
 class Login(View):
     template = 'registration/login.html'
+    form = Login()
 
     def get(self, request):
-        return render(request, self.template)
+        return render(request, self.template, {'login':self.form})
 
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
 
         try:
-            user = User.objects.get(pk=username)
+            user = User.objects.get(username = username)
             if user.password == password:
                 request.session['username'] = user.username
                 request.session['type'] = user.type
-                return redirect(reverse('registration:index'))
+                return redirect(reverse('registration:user_home'))
         except User.DoesNotExist:
             user = None
 
