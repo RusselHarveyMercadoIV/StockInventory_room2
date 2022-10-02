@@ -38,4 +38,4 @@ class RegisterEmployee(View):
         return index(request)
 
 
-sample 
+ 
