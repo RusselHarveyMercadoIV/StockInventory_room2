@@ -92,7 +92,7 @@ class Product(View):
         return render(request,self.template,{'form': self.form})
 
     def post(self,request):
-        self.form = SupplierForm(request.POST)
+        self.form = ProductForm(request.POST)
         if self.form.is_valid():
             self.form.save()
             return render(request,self.template,{'form':self.form})
