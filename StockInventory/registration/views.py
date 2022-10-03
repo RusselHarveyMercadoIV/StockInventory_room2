@@ -4,23 +4,14 @@ from django.views import View
 from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, SupplierForm
 from registration.models import *
 
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'registration/index.html')
-@login_required
-class User_Home(View):
-    template = 'registration/user_home.html'
-    def get(self, request):
-        return render(request, self.template)
-@login_required
-def user_logout(request):
-    logout(request)
-    return redirect(reverse('registration:home'))
+def user_home(request):
+    return render(request, 'registration/user_home.html')
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
@@ -72,12 +63,7 @@ class User_login(View):
                 request.session['employee_id'] = user.user_ID
                 request.session['username'] = user.username
                 request.session['type'] = user.type
-                # not necessary but just to add feature
-                user = authenticate(username = username, password = password)
-                if user:
-                    if user.is_active:
-                        login(request, user)
-                return redirect(reverse('registration:user_home'))
+                return redirect(reverse('user_home'))
         except User.DoesNotExist:
             user = None
 

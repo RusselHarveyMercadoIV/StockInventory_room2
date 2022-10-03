@@ -1,4 +1,9 @@
 {% extends "registration/base.html" %}
+
+{% block body1_block%}
+    <l1><a href="{% url 'registration:login'%}" class="navbar-link">Login</a></l1>
+{% endblock %}
+
 {% block body_block %}
     <div class = "jumbotron">
         {% if registered %}

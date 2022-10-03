@@ -1,4 +1,9 @@
 {% extends 'registration/base.html' %}
+
+{% block body1_block%}
+    <l1><a href="{% url 'registration:register_employee'%}" class = "navbar-link">Register</a></l1>
+{% endblock %}
+
 {% block body_block %}
 
     <div class = "jumbotron">
@@ -6,7 +11,7 @@
             {% if msg != '' %}
                 {{msg}}
             {% endif %}
-            <form  action = "{% url 'registration:login'%}", method="POST">
+            <form method="POST">
                  {% csrf_token %}
                 <label for="username">Username:</label>
                 <input type="text" name = "username" placeholder="Enter Username">
