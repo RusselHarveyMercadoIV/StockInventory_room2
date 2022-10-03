@@ -37,14 +37,16 @@ class Login(forms.Form):
     username = forms.CharField(widget=forms.TextInput())
     password = forms.CharField(widget=forms.PasswordInput())
 
+
 class Supplier(forms.Form):
     supplier_ID = forms.AutoField(widget=forms.NumberInput)
     companyName = forms.CharField(widget=forms.TextInput)
     address = forms.CharField(wdget=forms.TextInput)
     contact = forms.CharField(widget=forms.TextInput)
 
-    class Meta: Supplier
-    fields = '__all__'
+    class Meta:
+        model = Supplier
+        fields = '__all__'
 
 
 
