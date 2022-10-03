@@ -91,6 +91,11 @@ class Supplier(View):
     def get(self,request):
         return render(request,self.template,{'form': self.form})
 
+    def post(self,request):
+        self.form = SupplierForm(request.POST)
+        if self.form.is_valid():
+            self.form.save()
+            return render(request,self.template,{'form':self.form})
 
 # class Product(View):
 
