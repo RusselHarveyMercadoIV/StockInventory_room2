@@ -20,7 +20,7 @@
                     <th>Sales ID</th>
                     <th>Customer ID</th>
                     <th>Employee ID</th>
-                    <th>Product ID</th>
+                    <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Date Of Sale</th>
                 </thead>
@@ -29,7 +29,7 @@
                     <td>{{ rec.salesID }}</td>
                     <td>{{ rec.cUser_ID.user_ptr_id }}</td>
                     <td>{{ rec.eUser_ID.user_ptr_id }}</td>
-                    <td>{{ rec.product_ID }}</td>
+                    <td>{{ rec.product_ID.prodName }}</td>
                     <td>{{ rec.quantity }}</td>
                     <td>{{ rec.dateOfSale }}</td>
                 </tr>
