@@ -1,6 +1,8 @@
 {% extends "registration/base.html" %}
 
 {% block body1_block%}
+    <l1><a href="{% url 'registration:home'%}" class = "navbar-link">Home</a></l1>
+    <l1><a href="{% url 'admin:index'%}" class = "navbar-link">Admin</a></l1>
     <l1><a href="{% url 'registration:register_employee'%}" class = "navbar-link">Register</a></l1>
     <l1><a href="{% url 'registration:login'%}" class="navbar-link">Login</a></l1>
 {% endblock %}

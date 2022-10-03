@@ -1,0 +1,31 @@
+.navbar-link{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.navbar-link:hover{
+    text-decoration: none;
+}
+
+.greetings{
+    border: 2px solid black;
+    width: 50%;
+    margin: 0 auto;
+}
+.greetings *{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.user_name{
+    font-weight: bolder;
+    padding-right: 20px;
+}
+
+table, td, th{
+    border: 2px solid black;
+}
+
+.recordslist{
+    margin-top: 15px
+}
