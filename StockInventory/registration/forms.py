@@ -39,10 +39,6 @@ class Login(forms.Form):
 
 
 class Supplier(forms.Form):
-    supplier_ID = forms.AutoField(widget=forms.NumberInput)
-    companyName = forms.CharField(widget=forms.TextInput)
-    address = forms.CharField(wdget=forms.TextInput)
-    contact = forms.CharField(widget=forms.TextInput)
 
     class Meta:
         model = Supplier
