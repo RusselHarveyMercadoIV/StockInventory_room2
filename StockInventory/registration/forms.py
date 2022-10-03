@@ -27,11 +27,6 @@ class RegisterEmployeeForm(ModelForm):
         self.instance.type = self.type
 
 
-class SalesForm(ModelForm):
-    class Meta:
-        model = Sales
-        fields = '__all__'
-
 class SupplierForm(ModelForm):
     companyName = forms.CharField(widget=forms.TextInput())
     address = forms.CharField(widget=forms.TextInput())
