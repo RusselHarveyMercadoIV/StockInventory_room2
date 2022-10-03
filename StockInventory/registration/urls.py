@@ -10,6 +10,6 @@ urlpatterns = [
     path('register_e/', views.RegisterEmployee.as_view(), name = 'register_employee'),
     path('supplier/',views.Supplier.as_view(), name = 'supplier'),
     path('salesrecord/', views.SalesRecord.as_view(), name='sales_record'),
-    # path('product',views.Product.as_view(), name = 'product'),
+    path('product/',views.Product.as_view(), name = 'product'),
 
 ]
