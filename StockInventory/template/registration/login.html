@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>
-<body>
-    <h1> Login Account </h1>
-    <div>
-        {% if msg != '' %}
-            {{msg}}
-        {% endif %}
+{% extends 'registration/base.html' %}
+{% block body_block %}
+
+    <div class = "jumbotron">
+        <h1>Please login</h1>
+            {% if msg != '' %}
+                {{msg}}
+            {% endif %}
+            <form  action = "{% url 'registration:login'%}", method="POST">
+                 {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" name = "username" placeholder="Enter Username">
+                <label for="password">Password:</label>
+                <input type="password" name = "password">
+                <input type="Submit" value="Login">
+            </form>
     </div>
-    <div class = "container">
-        <form  method="POST">
-             {{login.as_p}}
-             {% csrf_token %}
-            <input type="Submit" value="Login">
-        </form>
-    </div>
-</body>
-</html>
+{% endblock %}

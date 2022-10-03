@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-</head>
-<body>
-    <h1>Welcome!</h1>
-    <h2>Register as?</h2>
-    <a href="{% url 'registration:register_customer' %}">Customer</a>
-    <a href="{% url 'registration:register_employee' %}">Employee</a>
-</body>
-</html>
+{% extends "registration/base.html" %}
+{% block body_block %}
+
+<div class = "jumbotron">
+    <h1>Welcome to Room2 Stock Inventory</h1>
+</div>
+
+{% endblock %}

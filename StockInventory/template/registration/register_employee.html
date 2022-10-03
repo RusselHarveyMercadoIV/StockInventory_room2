@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-    <h1>Employee Registration</h1>
-    <div class = "container">
-         <form method="POST">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="Submit" value="Submit">
-        </form>
+{% extends "registration/base.html" %}
+{% block body_block %}
+    <div class = "jumbotron">
+        {% if registered %}
+            <h1>You are Registered!</h1>
+        {% else %}
+            <h1>Register Here!</h1>
+            <h3>Fill out the Form:</h3>
+            <form method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="Submit" value="Register">
+            </form>
+        {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

@@ -1,17 +1,26 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, Login, SupplierForm
+from registration.forms import RegisterCustomerForm, RegisterEmployeeForm, SupplierForm
 from registration.models import *
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'registration/index.html')
-
-def user_home(request):
-    return render(request, 'registration/user_home.html')
+@login_required
+class User_Home(View):
+    template = 'registration/user_home.html'
+    def get(self, request):
+        return render(request, self.template)
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('registration:home'))
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
@@ -31,6 +40,7 @@ class RegisterCustomer(View):
 class RegisterEmployee(View):
     template = 'registration/register_employee.html'
     form = RegisterEmployeeForm()
+    registered = False
 
     def get(self, request):
         return render(request, self.template, {'form':self.form})
@@ -39,18 +49,18 @@ class RegisterEmployee(View):
         self.form = RegisterEmployeeForm(request.POST)
         if self.form.is_valid():
             self.form.save()
-            return redirect(reverse('registration:login'))
+            self.registered = True
         else:
             print("unsucessful")
-        return index(request)
+        return render(request, self.template, {'form': self.form,
+                                               'registered': self.registered})
 
 
-class Login(View):
+class User_login(View):
     template = 'registration/login.html'
-    form = Login()
 
     def get(self, request):
-        return render(request, self.template, {'login':self.form})
+        return render(request, self.template)
 
     def post(self, request):
         username = request.POST['username']
@@ -59,8 +69,14 @@ class Login(View):
         try:
             user = User.objects.get(username = username)
             if user.password == password:
+                request.session['employee_id'] = user.user_ID
                 request.session['username'] = user.username
                 request.session['type'] = user.type
+                # not necessary but just to add feature
+                user = authenticate(username = username, password = password)
+                if user:
+                    if user.is_active:
+                        login(request, user)
                 return redirect(reverse('registration:user_home'))
         except User.DoesNotExist:
             user = None
