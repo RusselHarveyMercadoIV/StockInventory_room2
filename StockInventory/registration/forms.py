@@ -39,7 +39,7 @@ class Login(forms.Form):
 
 class SupplierForm(ModelForm):
     companyName = forms.CharField(widget=forms.TextInput)
-    address = forms.CharField(wdget=forms.TextInput)
+    address = forms.CharField(widget=forms.TextInput)
     contact = forms.CharField(widget=forms.TextInput)
 
     class Meta:
