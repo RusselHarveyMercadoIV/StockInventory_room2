@@ -62,7 +62,6 @@ class User_login(View):
             if user.password == password:
                 request.session['employee_id'] = user.user_ID
                 request.session['username'] = user.username
-                request.session['type'] = user.type
                 return render(request,'registration/user_home.html', {'user_name': user.username})
         except User.DoesNotExist:
             user = None
