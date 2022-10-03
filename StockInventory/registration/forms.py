@@ -32,17 +32,26 @@ class SalesForm(ModelForm):
         model = Sales
         fields = '__all__'
 
-
 class Login(forms.Form):
     username = forms.CharField(widget=forms.TextInput())
     password = forms.CharField(widget=forms.PasswordInput())
 
 
-class Supplier(forms.Form):
+class SupplierForm(ModelForm):
+    companyName = forms.CharField(widget=forms.TextInput)
+    address = forms.CharField(wdget=forms.TextInput)
+    contact = forms.CharField(widget=forms.TextInput)
 
     class Meta:
         model = Supplier
         fields = '__all__'
 
 
+class ProductForm(ModelForm):
+    prodName = forms.CharField(widget=forms.TextInput)
+    prodQty = forms.IntegerField(widget=forms.NumberInput)
+    prodPrice = forms.IntegerField(widget=forms.NumberInput)
 
+    class Meta:
+        model = Product
+        fields = '__all__'

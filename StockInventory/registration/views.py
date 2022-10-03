@@ -67,12 +67,18 @@ class Login(View):
 
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
+
 class Supplier(View):
     template = 'supplier'
     form = SupplierForm()
 
     def get(self,request):
         return render(request,self.template,{'form': self.form})
+
+
+# class Product(View):
+
+
 
 
 
