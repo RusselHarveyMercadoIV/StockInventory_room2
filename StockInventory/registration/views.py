@@ -70,29 +70,6 @@ class User_login(View):
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
 
-class SalesRecord(View):
-    template = 'registration/sales_record.html'
-    form = SalesForm()
-    records_list = Sales.objects.order_by('salesID')
-    def get(self,request):
-        return render(request, self.template, {'form': self.form,
-                                               'records' : self.records_list,
-                                               'user_name':request.session['username']})
-    def post(self, request):
-        self.form = SalesForm(request.POST)
-
-        if self.form.is_valid():
-            self.form.save()
-            return redirect(reverse('registration:sales_record'))
-        else:
-            print("Unsuccesful")
-        return redirect(reverse('user_home'))
-
-
-
-
-
-
 
 class Supplier(View):
     template = 'registration/supplier.html'

@@ -18,7 +18,9 @@ from django.urls import path, include
 from registration import views
 
 urlpatterns = [
-    path('', include('registration.urls')),
+    path('', views.index, name="home"),
+    path('registration/', include('registration.urls')),
+    path('salesrecord/', include('salesrecord.urls')),
     path('userhome/', views.user_home, name='user_home'),
     path('admin/', admin.site.urls),
 ]
