@@ -37,8 +37,7 @@ class Login(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 
-class Supplier(ModelForm):
-    supplier_ID = forms.AutoField(widget=forms.NumberInput)
+class SupplierForm(ModelForm):
     companyName = forms.CharField(widget=forms.TextInput)
     address = forms.CharField(wdget=forms.TextInput)
     contact = forms.CharField(widget=forms.TextInput)
@@ -49,6 +48,9 @@ class Supplier(ModelForm):
 
 
 class ProductForm(ModelForm):
+    prodName = forms.CharField(widget=forms.TextInput)
+    prodQty = forms.IntegerField(widget=forms.NumberInput)
+    prodPrice = forms.IntegerField(widget=forms.NumberInput)
 
     class Meta:
         model = Product

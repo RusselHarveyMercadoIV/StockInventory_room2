@@ -76,6 +76,11 @@ class Supplier(View):
         return render(request,self.template,{'form': self.form})
 
 
+# class Product(View):
+
+
+
+
 
 
 
