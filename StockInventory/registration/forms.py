@@ -32,13 +32,12 @@ class SalesForm(ModelForm):
         model = Sales
         fields = '__all__'
 
-
 class Login(forms.Form):
     username = forms.CharField(widget=forms.TextInput())
     password = forms.CharField(widget=forms.PasswordInput())
 
 
-class Supplier(forms.Form):
+class Supplier(ModelForm):
     supplier_ID = forms.AutoField(widget=forms.NumberInput)
     companyName = forms.CharField(widget=forms.TextInput)
     address = forms.CharField(wdget=forms.TextInput)
@@ -49,4 +48,8 @@ class Supplier(forms.Form):
         fields = '__all__'
 
 
+class ProductForm(ModelForm):
 
+    class Meta:
+        model = Product
+        fields = '__all__'

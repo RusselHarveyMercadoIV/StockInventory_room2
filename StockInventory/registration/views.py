@@ -67,6 +67,7 @@ class Login(View):
 
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
+
 class Supplier(View):
     template = 'supplier'
     form = SupplierForm()
