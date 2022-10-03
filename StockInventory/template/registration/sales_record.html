@@ -1,0 +1,43 @@
+{% extends 'registration/base.html'%}
+
+{% block body1_block %}
+    <l1><span class = "user_name">{{user_name}}</span></l1>
+    <l1><a href="{% url 'user_home'%}" class = "navbar-link">Home</a></l1>
+{% endblock %}
+
+
+{% block body_block %}
+    <div class = "jumbotron">
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" value="Add Record">
+        </form>
+        <div class = "recordslist jumbotron">
+            {% if records %}
+            <table>
+                <thead>
+                    <th>Sales ID</th>
+                    <th>Customer ID</th>
+                    <th>Employee ID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Date Of Sale</th>
+                </thead>
+                {% for rec in records %}
+                <tr>
+                    <td>{{ rec.salesID }}</td>
+                    <td>{{ rec.cUser_ID }}</td>
+                    <td>{{ rec.eUser_ID }}</td>
+                    <td>{{ rec.product_ID }}</td>
+                    <td>{{ rec.quantity }}</td>
+                    <td>{{ rec.dateOfSale }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No  Records Found!</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
