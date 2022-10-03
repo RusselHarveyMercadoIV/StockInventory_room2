@@ -47,6 +47,10 @@ class RegisterEmployee(View):
                                                'registered': self.registered})
 
 
+# class User_logout(View):
+#    template = 'registration/logout.html'
+
+
 class User_login(View):
     template = 'registration/login.html'
 

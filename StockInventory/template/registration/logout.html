@@ -1,0 +1,10 @@
+{% extends 'registration/base.html' %}
+
+{% block body1_block%}
+<div>
+  <small>
+    You have been logged out!
+    <li> <a href="{% url 'registration:login'%}" class="navbar-link">Login Again</a> </li>
+  </small>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from StockInventory.addsupplier import views
+from addsupplier import views
 
 app_name = 'add_supplier'
 

@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-    <h1>Customer Registration</h1>
-    <div class = "container">
-        <form method="POST">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="Submit" value="Submit">
-        </form>
+{% extends "registration/base.html" %}
+
+{% block body1_block%}
+    <l1><a href="{% url 'home'%}" class = "navbar-link">Home</a></l1>
+    <l1><a href="{% url 'admin:index'%}" class = "navbar-link">Admin</a></l1>
+    <l1><a href="{% url 'registration:login'%}" class="navbar-link">Login</a></l1>
+{% endblock %}
+
+{% block body_block %}
+    <div class = "jumbotron">
+        {% if registered %}
+            <h1>You are Registered!</h1>
+        {% else %}
+            <h1>Register Here!</h1>
+            <h3>Fill out the Form:</h3>
+            <form method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="Submit" value="Register">
+            </form>
+        {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

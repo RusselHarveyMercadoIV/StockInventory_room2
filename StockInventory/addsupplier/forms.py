@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from StockInventory.registration.models import Supplier
+from registration.models import Supplier
 
 
 class SupplierForm(ModelForm):
