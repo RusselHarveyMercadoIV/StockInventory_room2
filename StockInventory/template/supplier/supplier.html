@@ -2,7 +2,7 @@
 
 {% block body1_block %}
 
-    <l1><span class = "user_name">{{user_name}}</span></l1>
+    <l1><span class = "user_name">{{request.session.username}}</span></l1>
     <l1><a href="{% url 'user_home'%}" class = "navbar-link">Home</a></l1>
 
 {% endblock %}

@@ -12,8 +12,7 @@ class Supplier(View):
     form = SupplierForm()
 
     def get(self,request):
-        return render(request, self.template, {'form': self.form,
-                                               'user_name':request.session['username']})
+        return render(request, self.template, {'form': self.form})
 
     def post(self, request):
         self.form = SupplierForm(request.POST)

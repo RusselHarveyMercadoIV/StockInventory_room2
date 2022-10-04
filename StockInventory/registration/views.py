@@ -16,8 +16,7 @@ def user_home(request):
 
     return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
                                                            'records': records_list,
-                                                           'suppliers': supplier_list,
-                                                           'user_name':request.session['username']})
+                                                           'suppliers': supplier_list})
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
