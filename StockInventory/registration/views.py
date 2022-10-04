@@ -79,6 +79,7 @@ class User_login(View):
             user = User.objects.get(username = username)
             if user.password == password:
                 request.session['username'] = user.username
+                request.session['employee_id'] = user.user_ID
                 return redirect(reverse('user_home'))
         except User.DoesNotExist:
             user = None
