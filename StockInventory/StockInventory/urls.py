@@ -20,6 +20,7 @@ from registration import views
 urlpatterns = [
     path('', views.index, name="home"),
     path('registration/', include('registration.urls')),
+    path('products/', include('addproduct.urls')),
     path('salesrecord/', include('salesrecord.urls')),
     path('userhome/', views.user_home, name='user_home'),
     path('logout/', views.user_logout, name='logout'),

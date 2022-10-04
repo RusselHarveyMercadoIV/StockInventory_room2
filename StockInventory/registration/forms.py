@@ -36,12 +36,3 @@ class SupplierForm(ModelForm):
         model = Supplier
         fields = '__all__'
 
-
-class ProductForm(ModelForm):
-    prodName = forms.CharField(widget=forms.TextInput())
-    prodQty = forms.IntegerField(widget=forms.NumberInput())
-    prodPrice = forms.IntegerField(widget=forms.NumberInput())
-
-    class Meta:
-        model = Product
-        fields = '__all__'

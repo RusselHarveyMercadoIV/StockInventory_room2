@@ -4,6 +4,7 @@
     <l1><a href="{% url 'user_home'%}" class = "navbar-link">Home</a></l1>
     <l1><a href="{% url 'salesrecord:sales_record'%}" class="navbar-link">Add Record</a></l1>
     <l1><a href="{% url 'add_supplier:supplier'%}" class="navbar-link">Add Supplier</a></l1>
+    <l1><a href="{% url 'addproduct:add_product'%}" class="navbar-link">Add Product</a></l1>
     <l1><a href="{% url 'logout'%}" class="navbar-link">Logout</a></l1>
 
 {% endblock %}
@@ -66,7 +67,30 @@
                     {% endif %}
                 </div>
             </div>
+            <div class = "recordslist">
+            <h4>Products</h4>
+            {% if products %}
+            <table>
+                <thead>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Supplier</th>
+                </thead>
+                {% for rec in products %}
+                <tr>
+                    <td>{{ rec.product_ID}}</td>
+                    <td>{{ rec.prodQty }}</td>
+                    <td>{{ rec.prodPrice }}</td>
+                    <td>{{ rec.supplier_ID }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No  Products Found!</p>
+            {% endif %}
         </div>
+    </div>
 
 </div>
 

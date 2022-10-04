@@ -1,0 +1,17 @@
+{% extends 'registration/base.html'%}
+
+{% block body1_block %}
+    <l1><span class = "user_name">{{request.session.username}}</span></l1>
+    <l1><a href="{% url 'user_home'%}" class = "navbar-link">Home</a></l1>
+{% endblock %}
+
+
+{% block body_block %}
+    <div class = "jumbotron">
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" value="Add Product">
+        </form>
+    </div>
+{% endblock %}

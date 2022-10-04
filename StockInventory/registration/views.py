@@ -14,13 +14,15 @@ def index(request):
 def user_home(request):
     records_list = Sales.objects.order_by('salesID')
     supplier_list = Supplier.objects.order_by('companyName')
+    products_list = Product.objects.order_by('product_ID')
 
     if request.session['username'] == None:
         return render(request, 'registration/index.html')
 
     return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
                                                            'records': records_list,
-                                                           'suppliers': supplier_list})
+                                                           'suppliers': supplier_list,
+                                                           'products': products_list})
 
 def user_logout(request):
     request.session['username'] == None
@@ -86,18 +88,7 @@ class User_login(View):
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
 
-class Product(View):
-    template = 'product.html'
-    form = ProductForm
 
-    def get(self,request):
-        return render(request,self.template,{'form': self.form})
-
-    def post(self,request):
-        self.form = ProductForm(request.POST)
-        if self.form.is_valid():
-            self.form.save()
-            return render(request,self.template,{'form':self.form})
 
 
     
