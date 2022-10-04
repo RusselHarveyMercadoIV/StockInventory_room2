@@ -14,6 +14,59 @@
     <div class = "greetings">
         <h3>Hello, {{user_name}}</h3>
     </div>
+    <div class = "jumbotron">
+        <div class = "recordslist">
+            <h4>Sales Record</h4>
+            {% if records %}
+            <table>
+                <thead>
+                    <th>Sales ID</th>
+                    <th>Customer ID</th>
+                    <th>Employee ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Date Of Sale</th>
+                </thead>
+                {% for rec in records %}
+                <tr>
+                    <td>{{ rec.salesID }}</td>
+                    <td>{{ rec.cUser_ID.user_ptr_id }}</td>
+                    <td>{{ rec.eUser_ID.user_ptr_id }}</td>
+                    <td>{{ rec.product_ID.prodName }}</td>
+                    <td>{{ rec.quantity }}</td>
+                    <td>{{ rec.dateOfSale }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No  Sales Records Found!</p>
+            {% endif %}
+        </div>
+            <div class = "jumbotron">
+                <div class="recordslist">
+                    <h4>Suppliers</h4>
+                    {% if suppliers %}
+                    <table>
+                        <thead>
+                            <th>Company Name</th>
+                            <th>Address</th>
+                            <th>Contacts</th>
+
+                        </thead>
+                        {% for rec in suppliers %}
+                        <tr>
+                            <td>{{ rec.companyName }}</td>
+                            <td>{{ rec.address }}</td>
+                            <td>{{ rec.contact }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <p>No  Suppliers Found!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
 </div>
 

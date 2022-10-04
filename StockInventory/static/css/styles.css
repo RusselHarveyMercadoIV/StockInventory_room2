@@ -28,6 +28,16 @@ table, td, th{
     vertical-align: middle;
 }
 
-.recordslist{
-    margin-top: 15px
+td, th{
+    padding: 10px;
 }
+
+.recordslist{
+    display: flex;
+    width: 60%;
+    margin: 15px auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff2e1;
+}
+

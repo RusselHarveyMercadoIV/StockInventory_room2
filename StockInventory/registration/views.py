@@ -11,7 +11,13 @@ from registration.models import *
 def index(request):
     return render(request, 'registration/index.html')
 def user_home(request):
-    return render(request, 'registration/user_home.html', {'user_name':request.session['username']})
+    records_list = Sales.objects.order_by('salesID')
+    supplier_list = Supplier.objects.order_by('companyName')
+
+    return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
+                                                           'records': records_list,
+                                                           'suppliers': supplier_list,
+                                                           'user_name':request.session['username']})
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
@@ -66,26 +72,11 @@ class User_login(View):
             if user.password == password:
                 request.session['employee_id'] = user.user_ID
                 request.session['username'] = user.username
-                return render(request,'registration/user_home.html', {'user_name': user.username})
+                return redirect(reverse('user_home'))
         except User.DoesNotExist:
             user = None
-
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
-
-
-class Supplier(View):
-    template = 'registration/supplier.html'
-    form = SupplierForm()
-
-    def get(self,request):
-        return render(request,self.template,{'form': self.form})
-
-    def post(self,request):
-        self.form = SupplierForm(request.POST)
-        if self.form.is_valid():
-            self.form.save()
-            return render(request,self.template,{'form':self.form})
 
 class Product(View):
     template = 'product.html'

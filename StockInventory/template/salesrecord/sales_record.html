@@ -13,31 +13,5 @@
             {% csrf_token %}
             <input type="submit" value="Add Record">
         </form>
-        <div class = "recordslist jumbotron">
-            {% if records %}
-            <table>
-                <thead>
-                    <th>Sales ID</th>
-                    <th>Customer ID</th>
-                    <th>Employee ID</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Date Of Sale</th>
-                </thead>
-                {% for rec in records %}
-                <tr>
-                    <td>{{ rec.salesID }}</td>
-                    <td>{{ rec.cUser_ID.user_ptr_id }}</td>
-                    <td>{{ rec.eUser_ID.user_ptr_id }}</td>
-                    <td>{{ rec.product_ID.prodName }}</td>
-                    <td>{{ rec.quantity }}</td>
-                    <td>{{ rec.dateOfSale }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <p>No  Records Found!</p>
-            {% endif %}
-        </div>
     </div>
 {% endblock %}

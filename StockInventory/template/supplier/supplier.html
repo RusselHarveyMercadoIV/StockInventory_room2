@@ -14,26 +14,6 @@
             {% csrf_token %}
             <input type="submit" value="Add Supplier">
         </form>
-        <div class = "recordslist jumbotron">
-            {% if records %}
-            <table>
-                <thead>
-                    <th>Company Name</th>
-                    <th>Address</th>
-                    <th>Contacts</th>
 
-                </thead>
-                {% for rec in records %}
-                <tr>
-                    <td>{{ rec.companyName }}</td>
-                    <td>{{ rec.address }}</td>
-                    <td>{{ rec.contact }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <p>No  Records Found!</p>
-            {% endif %}
-        </div>
     </div>
 {% endblock %}

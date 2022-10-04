@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.views import View
 
 from registration.forms import SupplierForm
-from registration.models import Supplier
 
 # Create your views here.
 
@@ -11,11 +10,9 @@ from registration.models import Supplier
 class Supplier(View):
     template = 'supplier/supplier.html'
     form = SupplierForm()
-    records_list = Supplier.objects.order_by('companyName')
 
     def get(self,request):
         return render(request, self.template, {'form': self.form,
-                                               'records' : self.records_list,
                                                'user_name':request.session['username']})
 
     def post(self, request):
