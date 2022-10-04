@@ -20,7 +20,7 @@ class Supplier(View):
 
         if self.form.is_valid():
             self.form.save()
-            return redirect(reverse('add_supplier:supplier'))
+            return redirect(reverse('user_home'))
         else:
             print("Unsuccesful")
         return redirect(reverse('user_home'))
