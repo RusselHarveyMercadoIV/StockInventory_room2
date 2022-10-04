@@ -51,11 +51,7 @@ h4{
     background-color: #fff7ed;
 }
 
-.test{
-    display: flex;
-    flex-direction: column;
-}
-.test p{
+.forms p{
     width: 150px;
 }
 

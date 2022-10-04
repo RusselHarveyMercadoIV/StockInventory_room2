@@ -10,7 +10,9 @@
 {% block body_block %}
     <div class = "jumbotron">
         <form method="post">
-            {{form.as_p}}
+            <div class = "forms">
+                {{form.as_p}}
+            </div>
             {% csrf_token %}
             <input type="submit" value="Add Supplier">
         </form>
