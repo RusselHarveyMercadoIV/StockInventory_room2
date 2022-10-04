@@ -51,7 +51,7 @@ h4{
     background-color: #fff7ed;
 }
 
-.forms p{
+.forms *{
     display: block;
 }
 
