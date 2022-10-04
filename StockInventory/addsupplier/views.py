@@ -12,6 +12,8 @@ class Supplier(View):
     form = SupplierForm()
 
     def get(self,request):
+        if request.session['username'] == None:
+            return render(request, 'registration/index.html')
         return render(request, self.template, {'form': self.form})
 
     def post(self, request):

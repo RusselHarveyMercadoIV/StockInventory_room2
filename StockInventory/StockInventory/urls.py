@@ -22,7 +22,7 @@ urlpatterns = [
     path('registration/', include('registration.urls')),
     path('salesrecord/', include('salesrecord.urls')),
     path('userhome/', views.user_home, name='user_home'),
-    path('logout/', views.user_home, name='logout'),
+    path('logout/', views.user_logout, name='logout'),
     path('supplier/', include('addsupplier.urls')),
     path('admin/', admin.site.urls),
 ]

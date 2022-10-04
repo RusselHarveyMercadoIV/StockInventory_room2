@@ -9,14 +9,23 @@ from registration.models import *
 
 
 def index(request):
+    request.session['username'] = None
     return render(request, 'registration/index.html')
 def user_home(request):
     records_list = Sales.objects.order_by('salesID')
     supplier_list = Supplier.objects.order_by('companyName')
 
+    if request.session['username'] == None:
+        return render(request, 'registration/index.html')
+
     return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
                                                            'records': records_list,
                                                            'suppliers': supplier_list})
+
+def user_logout(request):
+    request.session['username'] == None
+    return redirect(reverse('home'))
+
 
 class RegisterCustomer(View):
     template = 'registration/register_customer.html'
@@ -69,7 +78,6 @@ class User_login(View):
         try:
             user = User.objects.get(username = username)
             if user.password == password:
-                request.session['employee_id'] = user.user_ID
                 request.session['username'] = user.username
                 return redirect(reverse('user_home'))
         except User.DoesNotExist:
