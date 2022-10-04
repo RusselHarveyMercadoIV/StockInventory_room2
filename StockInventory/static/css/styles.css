@@ -52,7 +52,7 @@ h4{
 }
 
 .forms p{
-    width: 150px;
+    display: block;
 }
 
 body {
