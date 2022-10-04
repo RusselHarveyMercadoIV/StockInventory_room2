@@ -32,6 +32,12 @@ td, th{
     padding: 10px;
 }
 
+h4{
+    color: #222;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
 .recordslist{
     display: flex;
     width: 60%;
