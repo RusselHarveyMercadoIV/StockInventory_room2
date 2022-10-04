@@ -51,9 +51,12 @@ h4{
     background-color: #fff7ed;
 }
 
-.jumbotron {
-
-
+.test{
+    display: flex;
+    flex-direction: column;
+}
+.test p{
+    width: 150px;
 }
 
 body {
