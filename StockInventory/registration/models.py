@@ -12,7 +12,7 @@ class User(models.Model):
     type = models.CharField(max_length=1, choices=type_user)
 
     def __str__(self):
-        return self.username + ' ' + self.firstname + ' ' + self.lastname + ' ' + self.type
+        return self.username
 
 class Employee(User):
     address = models.CharField(max_length=50)
@@ -27,6 +27,8 @@ class Supplier(models.Model):
     companyName = models.CharField(max_length=50, unique=True)
     address = models.CharField(max_length=50)
     contact = models.CharField(max_length=11)
+    def __str__(self):
+        return self.companyName
 
 
 class Product(models.Model):
@@ -35,6 +37,9 @@ class Product(models.Model):
     prodQty = models.IntegerField()
     prodPrice = models.IntegerField()
     supplier_ID = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.prodName
 
 class Sales(models.Model):
     salesID = models.AutoField(primary_key=True)
