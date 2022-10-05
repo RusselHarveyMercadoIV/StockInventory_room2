@@ -25,14 +25,3 @@ class RegisterEmployeeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
-
-
-class SupplierForm(ModelForm):
-    companyName = forms.CharField(widget=forms.TextInput())
-    address = forms.CharField(widget=forms.TextInput())
-    contact = forms.CharField(widget=forms.TextInput())
-
-    class Meta:
-        model = Supplier
-        fields = '__all__'
-

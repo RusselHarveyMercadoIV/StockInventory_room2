@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from registration.forms import SupplierForm
+from addsupplier.forms import SupplierForm
 
 # Create your views here.
 
