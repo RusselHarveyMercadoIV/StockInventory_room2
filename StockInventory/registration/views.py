@@ -87,6 +87,30 @@ class User_login(View):
             user = None
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
+class EditProfile(View):
+    template = 'editProfile.html'
+
+    def get(self,request):
+        if request.session['type'] == 'C':
+            customer = Customer.objects.get(pk = request.session['username'])
+            form = RegisterCustomerForm(instance=customer)
+
+        else:
+            employee = Employee.objects.get(pk=request.session['username'])
+            form = RegisterEmployeeForm(instance=employee)
+        return render(request,self.template,{'form':form})
+    def post(self,request):
+        if request.session['type'] == 'C':
+            customer = Customer.objects.get(pk= request.session['username'])
+            form = RegisterCustomerForm(request.POST,instance= customer)
+        else:
+            employee = Employee.object.get(pk=request.session['username'])
+            form = RegisterEmployeeForm(request.POST,instance= employee)
+
+        if form.is_valid():
+            form.save()
+        return render (request, 'index.html')
+
 
 
 
