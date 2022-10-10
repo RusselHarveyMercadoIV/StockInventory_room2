@@ -16,7 +16,7 @@ class User(models.Model):
 
 class Employee(User):
     address = models.CharField(max_length=50)
-    contact = models.CharField(max_length=11)
+    mobileNumber = models.CharField(max_length=13)
 
 
 class Customer(User):
