@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .navbar-link{
     border: 2px solid black;
     padding: 10px;
@@ -18,14 +22,18 @@
     text-align: center;
 }
 
+a:hover{
+    color:orange;
+}
+
 .user_name{
+    color: orange;
     font-weight: bolder;
     padding-right: 20px;
 }
 
 table, td, th{
     font-family: Courier New;
-    border: 2px solid black;
     text-align: center;
     vertical-align: middle;
 }
@@ -51,6 +59,25 @@ h4{
     background-color: #fff7ed;
 }
 
+.scroll_container{
+  border: 2px solid black;
+  display: block;
+  margin: 0 auto;
+  height: 150px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.scroll_head{
+    background-color: orange;
+    position: sticky;
+    top: 0px;
+}
+
+.scroll_head *{
+    color: #fff;
+}
+
 .forms *{
     display: block;
 }
@@ -58,6 +85,5 @@ h4{
 body {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
     color: #545455;
-
 }
 
