@@ -17,7 +17,7 @@ class RegisterCustomerForm(ModelForm):
 
 class RegisterEmployeeForm(ModelForm):
     type = 'E'
-    password = forms.CharField(widget=forms.PasswordInput(),label=)
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = Employee
         exclude = ['type']
