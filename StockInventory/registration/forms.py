@@ -16,7 +16,7 @@ class RegisterCustomerForm(ModelForm):
 
 
 def checkNumber(value):
-    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8','9']
+    numbers = [str(digit) for digit in range(10)]
     if (value[0] == '+') and (len(value) == 13):
         for digit in value[1:]:
             if digit not in numbers:
@@ -26,11 +26,14 @@ def checkNumber(value):
 
 class RegisterEmployeeForm(ModelForm):
     type = 'E'
+    # forms.ModelChoiceField(widget = forms.Select(), queryset = Student.objects.all())
     password = forms.CharField(widget=forms.PasswordInput())
-    mobileNumber = forms.CharField(validators=[checkNumber], max_length = 13)
+    mobileNumber = forms.CharField(validators=[checkNumber],
+                                   max_length = 13,
+                                   required = False)
     class Meta:
         model = Employee
-        exclude = ['type', 'mobileNumber']
+        exclude = ['type']
 
     def __init__(self, *args, **kwargs):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
