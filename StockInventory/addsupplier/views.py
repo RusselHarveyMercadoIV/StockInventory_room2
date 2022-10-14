@@ -12,21 +12,20 @@ from registration.models import Supplier
 class Suppliers(View):
     template = 'supplier/supplier.html'
     form = SupplierForm()
-    records_list = Supplier.objects.order_by('supplier_ID')
 
     def get(self,request):
+        records_list = Supplier.objects.order_by('supplier_ID')
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
-        return render(request, self.template, {'form': self.form, 'records': self.records_list})
+        return render(request, self.template, {'form': self.form, 'records':records_list})
 
     def post(self, request):
+        records_list = Supplier.objects.order_by('supplier_ID')
         self.form = SupplierForm(request.POST)
-
         if self.form.is_valid():
             self.form.save()
-            # return redirect(reverse('user_home'))
         else:
             print("Unsuccesful")
-        # return redirect(reverse('add_supplier:supplier'))
+        return render(request, self.template, {'form': self.form, 'records':records_list})
 
 

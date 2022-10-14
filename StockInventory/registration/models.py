@@ -49,3 +49,4 @@ class Sales(models.Model):
     product_ID = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     dateOfSale = models.DateField()
+

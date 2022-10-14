@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import *
+from .validators import checkNumber
 
 
 class RegisterCustomerForm(ModelForm):
@@ -13,16 +14,6 @@ class RegisterCustomerForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegisterCustomerForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
-
-
-def checkNumber(value):
-    numbers = [str(digit) for digit in range(10)]
-    if (value[0] == '+') and (len(value) == 13):
-        for digit in value[1:]:
-            if digit not in numbers:
-                raise forms.ValidationError("This is not a Number!")
-    else:
-        raise forms.ValidationError("Invalid Number!")
 
 class RegisterEmployeeForm(ModelForm):
     type = 'E'

@@ -9,15 +9,15 @@
 
 {% block body_block %}
     <div class = "jumbotron">
+        <div class = "forms">
         <form method="post">
-            <div class = "forms">
                 {{form.as_p}}
                 {% csrf_token %}
             <input type="submit" value="Add Supplier">
         </form>
-            </div>
-                <div class = "recordslist">
-                    {% if records %}
+        </div>
+        <div class = "recordslist">
+            {% if records %}
             <table class = "scroll_container">
                 <thead class = "scroll_head">
                     <th>Company Name</th>
@@ -37,7 +37,7 @@
             {% else %}
             <p>No Suppliers!</p>
             {% endif %}
-                </div>
-            </div>
+        </div>
+    </div>
 
 {% endblock %}
