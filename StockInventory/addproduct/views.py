@@ -23,3 +23,7 @@ class Product(View):
             return redirect(reverse('user_home'))
         else:
             print("unsuccessful")
+
+
+class EditProduct(View):
+    template = 'index.html'

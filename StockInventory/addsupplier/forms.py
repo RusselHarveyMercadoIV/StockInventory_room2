@@ -2,7 +2,6 @@ from django.forms import ModelForm
 from django import forms
 
 from registration.models import Supplier
-
 from registration.validators import checkNumber
 
 
@@ -14,3 +13,4 @@ class SupplierForm(ModelForm):
     class Meta:
         model = Supplier
         fields = '__all__'
+
