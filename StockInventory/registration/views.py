@@ -11,6 +11,7 @@ from registration.models import *
 def index(request):
     request.session['username'] = None
     return render(request, 'registration/index.html')
+
 class User_home(View):
     records_list = Sales.objects.order_by('salesID')
     def get(self, request):
@@ -18,8 +19,6 @@ class User_home(View):
             return render(request, 'registration/index.html')
         return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
                                                            'records': self.records_list})
-
-
 
 
 def user_logout(request):

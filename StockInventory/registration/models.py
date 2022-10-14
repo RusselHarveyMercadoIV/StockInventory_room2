@@ -26,7 +26,8 @@ class Supplier(models.Model):
     supplier_ID = models.AutoField(primary_key=True)
     companyName = models.CharField(max_length=50, unique=True)
     address = models.CharField(max_length=50)
-    contact = models.CharField(max_length=11)
+    mobileNumber = models.CharField(max_length=13)
+
     def __str__(self):
         return self.companyName
 

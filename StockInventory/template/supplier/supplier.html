@@ -12,10 +12,32 @@
         <form method="post">
             <div class = "forms">
                 {{form.as_p}}
-            </div>
-            {% csrf_token %}
+                {% csrf_token %}
             <input type="submit" value="Add Supplier">
         </form>
+            </div>
+                <div class = "recordslist">
+                    {% if records %}
+            <table class = "scroll_container">
+                <thead class = "scroll_head">
+                    <th>Company Name</th>
+                    <th>Address</th>
+                    <th>Mobile Number</th>
+                </thead>
+                <tbody>
+                {% for rec in records %}
+                    <tr>
+                        <td>{{ rec.companyName }}</td>
+                        <td>{{ rec.address }}</td>
+                        <td>{{ rec.mobileNumber }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Suppliers!</p>
+            {% endif %}
+                </div>
+            </div>
 
-    </div>
 {% endblock %}
