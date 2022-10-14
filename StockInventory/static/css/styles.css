@@ -53,7 +53,6 @@ h4{
 .recordslist{
     display: flex;
     width: 60%;
-    margin: 15px auto;
     flex-direction: column;
     align-items: center;
     background-color: #fff7ed;
@@ -80,6 +79,10 @@ h4{
 
 .forms *{
     display: block;
+}
+
+.supplyContainer{
+    display: flex;
 }
 
 body {
