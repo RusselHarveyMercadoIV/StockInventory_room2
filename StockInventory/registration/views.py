@@ -11,21 +11,19 @@ from registration.models import *
 def index(request):
     request.session['username'] = None
     return render(request, 'registration/index.html')
-def user_home(request):
+class User_home(View):
     records_list = Sales.objects.order_by('salesID')
-    supplier_list = Supplier.objects.order_by('companyName')
-    products_list = Product.objects.order_by('product_ID')
+    def get(self, request):
+        if request.session['username'] == None:
+            return render(request, 'registration/index.html')
+        return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
+                                                           'records': self.records_list})
 
-    if request.session['username'] == None:
-        return render(request, 'registration/index.html')
 
-    return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
-                                                           'records': records_list,
-                                                           'suppliers': supplier_list,
-                                                           'products': products_list})
+
 
 def user_logout(request):
-    request.session['username'] == None
+    request.session['username'] = None
     return redirect(reverse('home'))
 
 
