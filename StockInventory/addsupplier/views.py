@@ -29,3 +29,19 @@ class Suppliers(View):
         return render(request, self.template, {'form': self.form, 'records':records_list})
 
 
+class UpdateSupplier(View):
+    template = 'supplier/supplier.html'
+
+    def get(self,request):
+        supplier = Supplier.objects.get(pk=request.session['supplier_ID'])
+        form = SupplierForm(instance=supplier)
+        return render(request,self.template,{'form':form})
+
+    def post(self,request):
+        supplier = Supplier.objects.get(pk=request.session['supplier_ID'])
+        form = SupplierForm(request.POST,instance= supplier)
+
+        if form.is_valid():
+            form.save()
+            request.session['username']
+        return render(request, self.template, {'form': self.form})

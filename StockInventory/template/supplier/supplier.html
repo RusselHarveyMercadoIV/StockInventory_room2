@@ -12,23 +12,24 @@
         <div class = "forms"><form method="post">
             {{form.as_p}}
             {% csrf_token %}
-        <input type="submit" value="Add Supplier">
+        <input type="submit" value="Add Supplier"> <br>
+        <input type="submit" value="Edit Supplier">
         </form>
         </div>
         <div class = "recordslist">
         {% if records %}
-        <table class = "scroll_container">
+        <table class = "scroll_container" cellspacing="2">
             <thead class = "scroll_head">
             <th>Company Name</th>
             <th>Address</th>
             <th>Mobile Number</th>
             </thead>
-            <tbody>
             {% for rec in records %}
                 <tr>
                     <td>{{ rec.0 }}</td>
                     <td>{{ rec.1 }}</td>
-                    <td>{{ rec.2}}</td>
+                    <td>{{ rec.2 }}</td>
+                    <td><a href="{% url 'add_supplier:supplier'%}"> Edit </a> </td>
                     <td><a href="{% url 'add_supplier:supplier'%}"> Delete </a> </td>
                 </tr>
             {% endfor %}
