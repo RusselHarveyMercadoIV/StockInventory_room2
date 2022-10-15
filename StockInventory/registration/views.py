@@ -62,7 +62,6 @@ class RegisterEmployee(View):
         return render(request, self.template, {'form': self.form,
                                                'registered': self.registered})
 
-
 class User_login(View):
     template = 'registration/login.html'
 
@@ -100,7 +99,6 @@ class EditProfile(View):
             form.save()
             request.session['username'] = employee.username
         return redirect(reverse('user_home'))
-        # return render (request, 'registration/user_home.html')
 
 
 

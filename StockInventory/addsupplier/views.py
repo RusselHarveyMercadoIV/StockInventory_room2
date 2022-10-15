@@ -34,28 +34,29 @@ class UpdateSupplier(View):
     template = 'supplier/supplier.html'
 
     def get(self,request, id):
+        records_list = Supplier.objects.order_by('supplier_ID')
         suppliers = Supplier.objects.get(pk=int(id))
         form = SupplierForm(instance=suppliers)
-        return render(request, self.template, {'form': form})
+        return render(request, self.template, {'form': form, 'records':records_list})
 
-    def post(self,request):
-        supplier = Supplier.objects.get(pk=request.session['supplier_ID'])
+    def post(self,request, id):
+        supplier = Supplier.objects.get(pk=int(id))
         form = SupplierForm(request.POST,instance= supplier)
 
         if form.is_valid():
             form.save()
-            request.session['supplier_ID'] == Supplier.supplier_ID
-        return render(request, self.template, {'form': self.form})
+        return redirect(reverse('add_supplier:supplier'))
 
 
 class DeleteSupplier(View):
     template = 'supplier/supplier.html'
 
     def get(self, request, id):
-        # form = SupplierForm()
+        records_list = Supplier.objects.order_by('supplier_ID')
+        form = SupplierForm()
         suppliers = Supplier.objects.get(pk=int(id))
         suppliers.delete()
-        return redirect(reverse('add_supplier:supplier'))
+        return render(request, self.template, {'form': form, 'records':records_list})
 
 
 
