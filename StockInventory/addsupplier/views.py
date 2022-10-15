@@ -33,10 +33,10 @@ class Suppliers(View):
 class UpdateSupplier(View):
     template = 'supplier/supplier.html'
 
-    def get(self,request):
-        supplier = Supplier.objects.get(pk=request.session['supplier_ID'])
-        form = SupplierForm(instance=supplier)
-        return render(request,self.template,{'form':form})
+    def get(self,request, id):
+        suppliers = Supplier.objects.get(pk=int(id))
+        form = SupplierForm(instance=suppliers)
+        return render(request, self.template, {'form': form})
 
     def post(self,request):
         supplier = Supplier.objects.get(pk=request.session['supplier_ID'])
@@ -44,7 +44,7 @@ class UpdateSupplier(View):
 
         if form.is_valid():
             form.save()
-            request.session['username']
+            request.session['supplier_ID'] == Supplier.supplier_ID
         return render(request, self.template, {'form': self.form})
 
 
@@ -52,6 +52,7 @@ class DeleteSupplier(View):
     template = 'supplier/supplier.html'
 
     def get(self, request, id):
+        # form = SupplierForm()
         suppliers = Supplier.objects.get(pk=int(id))
         suppliers.delete()
         return redirect(reverse('add_supplier:supplier'))

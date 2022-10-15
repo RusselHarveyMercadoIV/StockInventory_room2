@@ -83,6 +83,7 @@ class User_login(View):
             user = None
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
+
 class EditProfile(View):
     template = 'registration/editProfile.html'
 
@@ -90,6 +91,7 @@ class EditProfile(View):
         employee = Employee.objects.get(pk=request.session['employee_id'])
         form = RegisterEmployeeForm(instance=employee)
         return render(request,self.template,{'form':form})
+
     def post(self,request):
         employee = Employee.objects.get(pk=request.session['employee_id'])
         form = RegisterEmployeeForm(request.POST,instance= employee)

@@ -30,7 +30,7 @@
                     <td>{{ rec.companyName }}</td>
                     <td>{{ rec.address }}</td>
                     <td>{{ rec.mobileNumber }}</td>
-                    <td><a href="{% url 'add_supplier:update_supplier'%}"> Edit </a> </td>
+                    <td><a href="{% url 'add_supplier:supplier'%}"> Edit </a> </td>
                     <td><a href="{% url 'add_supplier:delete_supplier' rec.supplier_ID %}"> Delete </a> </td>
                 </tr>
             {% endfor %}
