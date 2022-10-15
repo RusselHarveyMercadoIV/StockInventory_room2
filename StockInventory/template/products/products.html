@@ -13,7 +13,33 @@
                 {{form.as_p}}
             </div>
             {% csrf_token %}
-            <input type="submit" value="Add Product">
+            <input type="submit" value="Add Product" class="button">
+            <input type="submit" value="Edit Product" class="button">
         </form>
+        </div>
+        <div class = "recordslist">
+            {% if records %}
+        <table class = "scroll_container" cellspacing="2">
+            <thead class = "scroll_head">
+            <th>Product Name</th>
+            <th>Product Quantity</th>
+            <th>Product Price</th>
+            <th colspan="2"></th>
+            </thead>
+            {% for rec in records %}
+                <tr>
+                    <td>{{ rec.product_ID}}</td>
+                    <td>{{ rec.prodQty }}</td>
+                    <td>{{ rec.prodPrice }}</td>
+                    <td><a href="{% url 'addproduct:edit_product' rec.product_ID %}"> Edit </a> </td>
+                    <td><a href="{% url 'addproduct:delete_product' rec.product_ID %}"> Delete </a> </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Product Found!</p>
+        {% endif %}
     </div>
+</div>
 {% endblock %}

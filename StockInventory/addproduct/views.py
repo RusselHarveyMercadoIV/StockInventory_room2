@@ -26,4 +26,28 @@ class Product(View):
 
 
 class EditProduct(View):
-    template = 'index.html'
+    template = 'supplier/supplier.html'
+
+    def get(self,request, id):
+        records_list = Product.objects.order_by('product_ID')
+        product = Product.objects.get(pk=int(id))
+        form = ProductForm(instance=product)
+        return render(request, self.template, {'form': form, 'records':records_list})
+
+    def post(self,request, id):
+        supplier = Product.objects.get(pk=int(id))
+        form = ProductForm(request.POST,instance= supplier)
+
+        if form.is_valid():
+            form.save()
+        return redirect(reverse('add_supplier:supplier'))
+
+class DeleteProduct(View):
+    template = 'supplier/supplier.html'
+
+    def get(self, request, id):
+        records_list = Product.objects.order_by('product_ID')
+        form = ProductForm()
+        suppliers = Product.objects.get(pk=int(id))
+        suppliers.delete()
+        return render(request, self.template, {'form': form, 'records':records_list})
