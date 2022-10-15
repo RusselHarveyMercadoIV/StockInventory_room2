@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -45,3 +46,18 @@ class UpdateSupplier(View):
             form.save()
             request.session['username']
         return render(request, self.template, {'form': self.form})
+
+
+class DeleteSupplier(View):
+    template = 'supplier/supplier.html'
+
+    def get(self, request, id):
+        suppliers = Suppliers.objects.get(pk=int(id))
+        form = SupplierForm(instance=suppliers)
+        deleteSup = Suppliers.objects.get(pk=request.session['supplier_ID'])
+        suppliers.deleteSup.remove(deleteSup)
+        return render(request,self.template, {'form': self.form})
+
+
+
+
