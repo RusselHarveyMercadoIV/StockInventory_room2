@@ -52,11 +52,10 @@ class DeleteSupplier(View):
     template = 'supplier/supplier.html'
 
     def get(self, request, id):
-        suppliers = Suppliers.objects.get(pk=int(id))
+        suppliers = Supplier.objects.get(pk=int(id))
         form = SupplierForm(instance=suppliers)
-        deleteSup = Suppliers.objects.get(pk=request.session['supplier_ID'])
-        suppliers.deleteSup.remove(deleteSup)
-        return render(request,self.template, {'form': self.form})
+        suppliers.delete()
+        return render(request,self.template, {'form': form})
 
 
 
