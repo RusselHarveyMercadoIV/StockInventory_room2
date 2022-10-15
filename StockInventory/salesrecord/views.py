@@ -8,7 +8,6 @@ from salesrecord.forms import SalesForm
 from registration.models import Sales, Product
 
 
-
 # Create your views here.
 
 class SalesRecord(View):

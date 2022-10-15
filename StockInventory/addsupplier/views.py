@@ -8,7 +8,7 @@ from registration.models import Supplier
 
 
 # Create your views here.
-
+edit_On = False
 
 class Suppliers(View):
     template = 'supplier/supplier.html'
@@ -37,6 +37,7 @@ class UpdateSupplier(View):
         records_list = Supplier.objects.order_by('supplier_ID')
         suppliers = Supplier.objects.get(pk=int(id))
         form = SupplierForm(instance=suppliers)
+        edit_On = True
         return render(request, self.template, {'form': form, 'records':records_list})
 
     def post(self,request, id):
@@ -50,7 +51,6 @@ class UpdateSupplier(View):
 
 class DeleteSupplier(View):
     template = 'supplier/supplier.html'
-
     def get(self, request, id):
         records_list = Supplier.objects.order_by('supplier_ID')
         form = SupplierForm()
