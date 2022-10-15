@@ -15,23 +15,43 @@
     <div class = "greetings">
         <h3>Hello, <em class = "user_name">{{request.session.username}}</em></h3>
     </div>
+    <div class = "transactions">
+        {% if transaction %}
+            <table>
+                <thead>
+                    <th>Sales</th>
+                    <th>Supplier</th>
+                    <th>Product</th>
+                </thead>
+                <tbody>
+                    {% for trans in transaction %}
+                        <td>trans.0</td>
+                        <td>trans.1</td>
+                        <td>trans.2</td>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Transactions yet...</p>
+        {% endif %}
+    </div>
     <div class = "jumbotron">
         <div class = "recordslist">
             {% if records %}
             <table class = "scroll_container">
                 <thead class = "scroll_head">
-                    <th>Product Name</th>
-                    <th>Quantity</th>
+                    <th>Product</th>
+                    <th>Customer</th>
                     <th>Price</th>
-                    <th>Date Of Sale</th>
+                    <th>Quantity</th>
                 </thead>
                 <tbody>
                 {% for rec in records %}
                     <tr>
                         <td>{{ rec.product_ID }}</td>
-                        <td>{{ rec.quantity }}</td>
+                        <td>{{ rec.cUser_ID }}</td>
                         <td>{{ rec.product_ID.prodPrice }}</td>
-                        <td>{{ rec.dateOfSale }}</td>
+                        <td>{{ rec.quantity }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

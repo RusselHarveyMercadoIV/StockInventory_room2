@@ -42,6 +42,16 @@ td, th{
     padding: 10px;
 }
 
+.jumbotron{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button{
+    background-color: orange;
+}
+
 h4{
     font-family: Courier New;
     font-weight: bold;
@@ -61,7 +71,6 @@ h4{
 .scroll_container{
   border: 2px solid black;
   display: block;
-  margin: 0 auto;
   height: 150px;
   overflow-y: scroll;
   scroll-behavior: smooth;

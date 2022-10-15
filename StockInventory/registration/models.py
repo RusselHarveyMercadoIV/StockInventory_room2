@@ -50,3 +50,8 @@ class Sales(models.Model):
     quantity = models.IntegerField()
     dateOfSale = models.DateField()
 
+
+class Transactions(models.Model):
+    salesCount = models.IntegerField()
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)

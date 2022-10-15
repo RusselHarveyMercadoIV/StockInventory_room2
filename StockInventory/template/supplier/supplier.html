@@ -12,8 +12,8 @@
         <div class = "forms"><form method="post">
             {{form.as_p}}
             {% csrf_token %}
-        <input type="submit" value="Add Supplier"> <br>
-        <input type="submit" value="Edit Supplier">
+        <input type="submit" value="Add Supplier" class = "button">
+        <input type="submit" value="Edit Supplier" class = "button">
         </form>
         </div>
         <div class = "recordslist">
@@ -23,12 +23,13 @@
             <th>Company Name</th>
             <th>Address</th>
             <th>Mobile Number</th>
+            <th colspan="2"></th>
             </thead>
             {% for rec in records %}
                 <tr>
-                    <td>{{ rec.0 }}</td>
-                    <td>{{ rec.1 }}</td>
-                    <td>{{ rec.2 }}</td>
+                    <td>{{ rec.companyName }}</td>
+                    <td>{{ rec.address }}</td>
+                    <td>{{ rec.mobileNumber }}</td>
                     <td><a href="{% url 'add_supplier:supplier'%}"> Edit </a> </td>
                     <td><a href="{% url 'add_supplier:supplier'%}"> Delete </a> </td>
                 </tr>
