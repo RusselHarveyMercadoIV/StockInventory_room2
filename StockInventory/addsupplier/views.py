@@ -52,10 +52,10 @@ class DeleteSupplier(View):
     template = 'supplier/supplier.html'
 
     def get(self, request, id):
+        form = SupplierForm()
         suppliers = Supplier.objects.get(pk=int(id))
-        form = SupplierForm(instance=suppliers)
         suppliers.delete()
-        return render(request,self.template, {'form': form})
+        return redirect(reverse('add_supplier:supplier'))
 
 
 

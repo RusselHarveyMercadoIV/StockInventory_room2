@@ -24,7 +24,6 @@ class User_home(View):
                                                                'transaction':trans_list})
 
 
-
 def user_logout(request):
     request.session['username'] = None
     return redirect(reverse('home'))

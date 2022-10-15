@@ -1,9 +1,10 @@
-from django.forms import ModelForm, forms, NumberInput
+from django.forms import ModelForm, NumberInput
+from django import forms
 from registration.models import Sales
 
 
 class SalesForm(ModelForm):
-    dateOfSale = forms.FileField(widget=NumberInput(attrs={'type': 'date'}))
+    dateOfSale = forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
     class Meta:
         model = Sales
         fields = '__all__'
