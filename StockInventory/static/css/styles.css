@@ -52,8 +52,11 @@ td, th{
 }
 
 .records_prog{
-    height: 500px
+    height: 200px;
+    width: 800px;
+    flex-direction: row;
 }
+
 
 .button{
     background-color: orange;
@@ -92,8 +95,13 @@ h4{
   border: 2px solid black;
   display: block;
   height: 150px;
+  width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+.scroll_container *{
+  width: 100%;
 }
 
 .scroll_head{
