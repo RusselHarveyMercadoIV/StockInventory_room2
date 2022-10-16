@@ -73,7 +73,6 @@ h4{
 
 .recordslist{
     display: flex;
-    width: 60%;
     flex-direction: column;
     align-items: center;
     background-color: #fff7ed;
