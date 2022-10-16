@@ -14,15 +14,10 @@ def index(request):
     return render(request, 'registration/index.html')
 
 class User_home(View):
+
     def get(self, request):
         records_list = Sales.objects.order_by('dateOfSale')
         trans_list = Transactions.objects.order_by('salesCount')
-        cursorDate = connection.cursor()
-        cursorDate.callproc('dbstockinvetory.displayByDates',[request.session['username']])
-        allDate = cursorDate.fetchall()
-        cursorDate.close()
-        return render(request, self.template, {'form': form, 'allEvents': allEvents})
-
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
         return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
