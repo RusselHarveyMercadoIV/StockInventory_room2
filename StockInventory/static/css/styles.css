@@ -122,6 +122,9 @@ h4{
 .forms *{
     width: 250px;
 }
+.jumbotron{
+        height: 650px;
+}
 
 .supplyContainer, .userhomeContainer{
     display: flex;
