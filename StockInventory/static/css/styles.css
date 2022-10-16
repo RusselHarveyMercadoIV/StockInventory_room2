@@ -44,10 +44,15 @@ td, th{
     border-radius: 0;
 }
 
-.jumbotron{
+.records_prog, .jumbotron{
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+}
+
+.records_prog{
+    height: 500px
 }
 
 .button{
@@ -72,11 +77,15 @@ h4{
     line-height: 1.3;
 }
 
-.recordslist{
+.recordslist, .transactions{
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff7ed;
+}
+
+.dateInput{
+    width: 100px;
 }
 
 .scroll_container{
