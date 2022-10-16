@@ -20,15 +20,16 @@ class User_home(View):
     def get(self, request):
         records_list = Sales.objects.order_by('dateOfSale')
 
-        cursor = connection.cursor()
-
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
-
-        cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
-                                                               request.session['TDATE']])
-        trans = list(cursor.fetchall())
-        cursor.close()
+        try:
+            cursor = connection.cursor()
+            cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
+                                                                   request.session['TDATE']])
+            trans = list(cursor.fetchall())
+            cursor.close()
+        except:
+            print("No Inputted Date yet...")
         return render(request, self.template, {'user_name': request.session['username'],
                                                'records': records_list,
                                                'trans': trans})
