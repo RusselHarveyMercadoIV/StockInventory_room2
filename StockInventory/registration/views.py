@@ -1,4 +1,3 @@
-from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -14,48 +13,16 @@ def index(request):
     return render(request, 'registration/index.html')
 
 class User_home(View):
-    template = 'registration/user_home.html'
-
     def get(self, request):
         records_list = Sales.objects.order_by('dateOfSale')
-
-        cursor = connection.cursor()
+        trans_list = Transactions.objects.order_by('salesCount')
 
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
-
-        cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
-                                                               request.session['TDATE']])
-        trans = list(cursor.fetchall())
-        cursor.close()
-        return render(request, self.template , {'user_name':request.session['username'],
+        return render(request, 'registration/user_home.html', {'user_name':request.session['username'],
                                                                'records': records_list,
-                                                               'trans':trans})
-    def post(self,request):
+                                                               'transaction':trans_list})
 
-        request.session['FDATE'] = request.POST['fromDate']
-        request.session['TDATE'] = request.POST['toDate']
-
-        cursor = connection.cursor()
-        cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
-                                                               request.session['TDATE']])
-        trans = cursor.fetchall()
-        for t in trans:
-            prd = Product.objects.get(prodName=t[2])
-            try:
-                trans_record = Transactions.objects.get(product=prd)
-                update_record = Transactions(transactionID=trans_record.transactionID,
-                                             salesCount= (t[0] + trans_record.salesCount),
-                                             supplier=trans_record.supplier,
-                                             product=trans_record.product)
-                update_record.save()
-
-            except:
-                    Transactions.objects.create(salesCount=t[0],
-                                                supplier=Supplier.objects.get(companyName=t[1]),
-                                                product=prd)
-        cursor.close()
-        return redirect(reverse('user_home'))
 
 def user_logout(request):
     request.session['username'] = None
