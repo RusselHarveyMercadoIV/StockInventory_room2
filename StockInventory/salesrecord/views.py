@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from registration.models import Employee
+from registration.models import Employee, Sales, Product, Transactions, Supplier
 from salesrecord.forms import SalesForm
 
-from registration.models import Sales, Product
 
 
 # Create your views here.
@@ -32,6 +31,20 @@ class SalesRecord(View):
             if form.quantity > product.prodQty:
                 print("Value exceeds the current quantity!")
             else:
+                rev = form.quantity * product.prodPrice
+                try:
+                    trans_record = Transactions.objects.get(product= product.product_ID)
+                    update_record = Transactions(transactionID=trans_record.transactionID,
+                                                 salesCount=(trans_record.salesCount + rev),
+                                                 supplier=trans_record.supplier,
+                                                 product=trans_record.product)
+                    update_record.save()
+
+                except:
+                    supp = Supplier.objects.get(supplier_ID=product.supplier_ID.supplier_ID)
+                    Transactions.objects.create(salesCount=rev,
+                                                supplier=supp,
+                                                product=product)
                 form.save()
                 product.prodQty -= form.quantity
                 product.save()
