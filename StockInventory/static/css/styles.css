@@ -121,7 +121,7 @@ h4{
 .supplyContainer, .userhomeContainer{
     display: flex;
     justify-content: space-between;
-    height: 620px;
+    height: 500px;
 }
 
 body {
