@@ -25,7 +25,7 @@ class User_home(View):
             return render(request, 'registration/index.html')
 
         cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
-                                                                    request.session['TDATE']])
+                                                               request.session['TDATE']])
         trans = list(cursor.fetchall())
         cursor.close()
         return render(request, self.template , {'user_name':request.session['username'],
@@ -38,23 +38,22 @@ class User_home(View):
 
         cursor = connection.cursor()
         cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
-                                                                    request.session['TDATE']])
+                                                               request.session['TDATE']])
         trans = cursor.fetchall()
         for t in trans:
             prd = Product.objects.get(prodName=t[2])
             try:
                 trans_record = Transactions.objects.get(product=prd)
-                if t[0] > trans_record.salesCount:
-                    update_record = Transactions(transactionID=trans_record.transactionID,
-                                                     salesCount=t[0],
-                                                     supplier=trans_record.supplier,
-                                                     product=trans_record.product)
-                    update_record.save()
+                update_record = Transactions(transactionID=trans_record.transactionID,
+                                             salesCount= (t[0] + trans_record.salesCount),
+                                             supplier=trans_record.supplier,
+                                             product=trans_record.product)
+                update_record.save()
 
             except:
                     Transactions.objects.create(salesCount=t[0],
-                                            supplier=Supplier.objects.get(companyName=t[1]),
-                                            product=prd)
+                                                supplier=Supplier.objects.get(companyName=t[1]),
+                                                product=prd)
         cursor.close()
         return redirect(reverse('user_home'))
 
