@@ -30,3 +30,9 @@ class RegisterEmployeeForm(ModelForm):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
 
+
+class TransactionForm(ModelForm):
+
+    class Meta:
+        model = Transactions
+        fields = '__all__'

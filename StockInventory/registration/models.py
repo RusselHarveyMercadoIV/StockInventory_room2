@@ -52,6 +52,7 @@ class Sales(models.Model):
 
 
 class Transactions(models.Model):
+    transactionID = models.AutoField(primary_key=True)
     salesCount = models.IntegerField()
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, unique = True)
