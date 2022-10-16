@@ -41,6 +41,7 @@ table, td, th{
 
 td, th{
     padding: 10px;
+    border-radius: 0;
 }
 
 .jumbotron{
