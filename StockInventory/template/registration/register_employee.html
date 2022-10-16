@@ -14,9 +14,12 @@
             <h1>Register Here!</h1>
             <h3>Fill out the Form:</h3>
             <form method="POST">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="Submit" value="Register">
+                <div class = "forms">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="Submit" value="Register" class = "button">
+                </div>
+
             </form>
         {% endif %}
     </div>
