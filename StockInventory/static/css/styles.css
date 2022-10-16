@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .navbar-link{
@@ -22,7 +23,7 @@
     text-align: center;
 }
 
-a:hover{
+l1 a:hover{
     color:orange;
 }
 
@@ -50,6 +51,15 @@ td, th{
 
 .button{
     background-color: orange;
+    font-weight: 900;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #8a621a;
+    transition: background-color 0.7s;
+}
+
+.button:hover{
+    background-color: #ffbd44;
 }
 
 h4{
@@ -87,11 +97,13 @@ h4{
 }
 
 .forms *{
-    display: block;
+    width: 250px;
 }
 
-.supplyContainer{
+.supplyContainer, .userhomeContainer{
     display: flex;
+    justify-content: space-between;
+    height: 620px;
 }
 
 body {
