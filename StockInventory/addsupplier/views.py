@@ -18,16 +18,17 @@ class Suppliers(View):
         records_list = Supplier.objects.order_by('supplier_ID')
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
-        return render(request, self.template, {'form': self.form, 'records':records_list})
+        return render(request, self.template, {'form': self.form,
+                                               'records':records_list,
+                                               'edit_On':edit_On})
 
     def post(self, request):
-        records_list = Supplier.objects.order_by('supplier_ID')
         self.form = SupplierForm(request.POST)
         if self.form.is_valid():
             self.form.save()
         else:
             print("Unsuccesful")
-        return render(request, self.template, {'form': self.form, 'records':records_list})
+        return redirect(reverse('add_supplier:supplier'))
 
 
 class UpdateSupplier(View):
@@ -37,8 +38,9 @@ class UpdateSupplier(View):
         records_list = Supplier.objects.order_by('supplier_ID')
         suppliers = Supplier.objects.get(pk=int(id))
         form = SupplierForm(instance=suppliers)
-        edit_On = True
-        return render(request, self.template, {'form': form, 'records':records_list})
+        return render(request, self.template, {'form': form,
+                                               'records':records_list,
+                                               'edit_On':True})
 
     def post(self,request, id):
         supplier = Supplier.objects.get(pk=int(id))
@@ -56,7 +58,9 @@ class DeleteSupplier(View):
         form = SupplierForm()
         suppliers = Supplier.objects.get(pk=int(id))
         suppliers.delete()
-        return render(request, self.template, {'form': form, 'records':records_list})
+        return render(request, self.template, {'form': form,
+                                               'records':records_list,
+                                               'edit_On':edit_On} )
 
 
 

@@ -12,10 +12,10 @@
         <div class = "forms"><form method="post">
             {{form.as_p}}
             {% csrf_token %}
-            {% if edit_On == False %}
-        <input type="submit" value="Add Supplier" class = "button">
+            {% if edit_On%}
+                <input type="submit" value="EDIT" class = "button">
             {% else %}
-        <input type="submit" value="Edit Supplier" class = "button">
+                 <input type="submit" value="ADD" class = "button">
             {% endif %}
 
         </form>
