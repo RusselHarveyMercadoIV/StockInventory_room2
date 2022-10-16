@@ -13,8 +13,11 @@
                 {{form.as_p}}
             </div>
             {% csrf_token %}
+            {% if not edit_On %}
             <input type="submit" value="Add Product" class="button">
+            {% else %}
             <input type="submit" value="Edit Product" class="button">
+            {% endif %}
         </form>
         </div>
         <div class = "recordslist">
@@ -28,7 +31,7 @@
             </thead>
             {% for rec in records %}
                 <tr>
-                    <td>{{ rec.product_ID}}</td>
+                    <td>{{ rec.prodName}}</td>
                     <td>{{ rec.prodQty }}</td>
                     <td>{{ rec.prodPrice }}</td>
                     <td><a href="{% url 'addproduct:edit_product' rec.product_ID %}"> Edit </a> </td>
