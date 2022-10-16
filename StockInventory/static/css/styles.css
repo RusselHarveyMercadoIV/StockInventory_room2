@@ -61,6 +61,7 @@ td, th{
 
 .button:hover{
     background-color: #ffbd44;
+    border: 2px solid #c39e5b;
 }
 
 h4{
