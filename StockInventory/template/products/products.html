@@ -11,14 +11,13 @@
         <form method="post">
             <div class = "forms">
                 {{form.as_p}}
-                {% csrf_token %}
-                {% if not edit_On %}
-                <input type="submit" value="Add Product" class="button">
-                {% else %}
-                <input type="submit" value="Edit Product" class="button">
-                {% endif %}
             </div>
-
+            {% csrf_token %}
+            {% if not edit_On %}
+            <input type="submit" value="Add Product" class="button">
+            {% else %}
+            <input type="submit" value="Edit Product" class="button">
+            {% endif %}
         </form>
         </div>
         <div class = "recordslist">

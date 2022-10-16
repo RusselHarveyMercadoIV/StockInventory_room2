@@ -29,6 +29,7 @@ class RegisterEmployeeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegisterEmployeeForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
+        self.fields['mobileNumber'].label = 'Mobile Number'
 
 
 class TransactionForm(ModelForm):
