@@ -47,8 +47,13 @@ td, th{
 .records_prog, .jumbotron{
     display:flex;
     flex-direction: column;
+    background-color: #fff7ed;
     align-items: center;
     justify-content: space-between;
+}
+
+.recordContainer,.records_prog{
+    background-color: #fff7ed;
 }
 
 .records_prog{
@@ -121,7 +126,7 @@ h4{
 .supplyContainer, .userhomeContainer{
     display: flex;
     justify-content: space-between;
-    height: 500px;
+    height: 580px;
 }
 
 body {
