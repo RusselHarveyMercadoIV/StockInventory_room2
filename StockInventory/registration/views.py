@@ -18,7 +18,6 @@ class User_home(View):
     template = 'registration/user_home.html'
 
     def get(self, request):
-        trans = False
         records_list = Sales.objects.order_by('dateOfSale')
 
         if request.session['username'] == None:
