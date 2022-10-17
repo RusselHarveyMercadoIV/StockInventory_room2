@@ -7,20 +7,22 @@
 {% endblock %}
 
 {% block body_block %}
-    <div class = "jumbotron">
-        {% if registered %}
-            <h1>You are Registered!</h1>
-        {% else %}
-            <h1>Register Here!</h1>
-            <h3>Fill out the Form:</h3>
-            <form method="POST">
-                <div class = "forms">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                    <input type="Submit" value="Register" class = "button">
-                </div>
+    <div class = "jumbotron registerContainer">
+        <div class = "registerCard">
+            {% if registered %}
+                <h1>You are Registered!</h1>
+                {% else %}
+                <h1>Register</h1>
+                 <br>
+                <form method="POST">
+                    <div class = "forms">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <input type="Submit" value="Register" class = "button">
+                    </div>
 
-            </form>
-        {% endif %}
+                </form>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

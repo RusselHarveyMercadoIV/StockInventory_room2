@@ -38,8 +38,32 @@ h3{
     margin: 0;
 }
 
-.container{
-    height: 50px;
+.jumbotron{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registerContainer, .loginContainer{
+    display: flex;
+}
+
+.registerCard, .loginCard{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: black;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.loginCard form{
+    display: flex;
+    flex-direction: column;
+}
+
+.registerCard label,.registerCard h1, .loginCard label, .loginCard h1{
+    color: white;
 }
 
 
@@ -102,12 +126,15 @@ td, th{
 
 .button{
     background-color: orange;
+    margin-top: 15px;
     font-weight: 900;
     color: #fff;
     padding: 10px;
     border: 2px solid #8a621a;
     transition: background-color 0.7s;
 }
+
+
 
 .button:hover{
     background-color: #ffbd44;

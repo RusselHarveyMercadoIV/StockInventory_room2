@@ -8,8 +8,9 @@
 
 {% block body_block %}
 
-    <div class = "jumbotron">
-        <h1>Please login</h1>
+    <div class = "jumbotron loginContainer">
+        <div class = "loginCard">
+            <h1>Please login</h1>
             {% if msg != '' %}
                 {{msg}}
             {% endif %}
@@ -21,5 +22,6 @@
                 <input type="password" name = "password">
                 <input type="Submit" value="Login" class="button">
             </form>
+        </div>
     </div>
 {% endblock %}
