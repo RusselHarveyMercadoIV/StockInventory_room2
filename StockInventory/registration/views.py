@@ -19,7 +19,7 @@ class User_home(View):
 
     def get(self, request):
         records_list = Sales.objects.order_by('dateOfSale')
-
+        trans = False
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
         try:
