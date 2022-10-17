@@ -18,13 +18,14 @@ class User_home(View):
     template = 'registration/user_home.html'
 
     def get(self, request):
+        trans = False
         records_list = Sales.objects.order_by('product_ID__prodName')
         trans = False
         if request.session['username'] == None:
             return render(request, 'registration/index.html')
         try:
             cursor = connection.cursor()
-            cursor.callproc('dbstockinventory.sales_transaction', [request.session['FDATE'],
+            cursor.callproc('dbstockinventory.displayByDates', [request.session['FDATE'],
                                                                    request.session['TDATE']])
             trans = list(cursor.fetchall())
             cursor.close()

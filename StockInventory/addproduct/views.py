@@ -26,10 +26,9 @@ class Products(View):
         self.form = ProductForm(request.POST)
         if self.form.is_valid():
             self.form.save()
-            return redirect(reverse('user_home'))
         else:
             print("unsuccessful")
-
+        return redirect(reverse('addproduct:add_product'))
 
 class EditProduct(View):
     template = 'products/products.html'
