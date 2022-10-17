@@ -1,36 +1,73 @@
 *{
     box-sizing: border-box;
     border-radius: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+ background-image: url('https://img.freepik.com/free-vector/wavy-background-with-copy-space_52683-65230.jpg?w=740&t=st=1665979630~exp=1665980230~hmac=de62425b9efae5f0f2eb081a5be8f0289f9797022939e30b88b31c0730340555');
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ height: 700px;
 }
 
 .navbar-link{
-    border: 2px solid black;
     padding: 10px;
-}
-
-.navbar-link:hover{
+    font-weight: 600;
+    color: #fff;
     text-decoration: none;
 }
 
+label{
+    font-weight: 600;
+}
+
+.navbar{
+    border-radius: 0;
+    margin-bottom: 50px;
+}
+
+.navbar-link:hover{
+    color:orange;
+}
+
+h3{
+    margin: 0;
+}
+
+.container{
+    height: 50px;
+}
+
+
+
 .greetings{
-    font-family: Courier New;
+    background-color: #fff;
     border: 2px solid black;
-    width: 50%;
-    margin: 0 auto;
 }
 
 .greetings *{
     text-align: center;
+    padding: 10px;
 }
 
-l1 a:hover{
-    color:orange;
-}
-
-.user_name{
+.user_name, .logo{
     color: orange;
     font-weight: bolder;
     padding-right: 20px;
+}
+
+.logo{
+    border: 1px solid white;
+    padding: 7px;
+    border-radius: 0;
+}
+
+table{
+    background-color: #fff;
 }
 
 table, td, th{
@@ -44,22 +81,22 @@ td, th{
     border-radius: 0;
 }
 
-.records_prog, .jumbotron{
+.records_prog, .userhomeContainer{
     display:flex;
     flex-direction: column;
-    background-color: #fff7ed;
     align-items: center;
-    justify-content: space-between;
-}
-
-.recordContainer,.records_prog{
-    background-color: #fff7ed;
+    justify-content: space-around;
 }
 
 .records_prog{
-    height: 200px;
-    width: 800px;
+
+    height: 300px;
+    width: 100%;
     flex-direction: row;
+}
+
+.transactions form label{
+    font-weight: 600;
 }
 
 
@@ -89,7 +126,6 @@ h4{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff7ed;
 }
 
 .dateInput{
@@ -126,11 +162,19 @@ h4{
 .supplyContainer, .userhomeContainer{
     display: flex;
     justify-content: space-between;
-    height: 580px;
 }
 
-body {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    color: #545455;
+.recordContainer{
+    padding: 30px;
+    width: 100%;
 }
+
+.userhomeContainer{
+    border-left: 20px solid orange;
+    margin-top: 50px;
+    height: 350px;
+    background-color: #ffa5007a;
+
+}
+
 
