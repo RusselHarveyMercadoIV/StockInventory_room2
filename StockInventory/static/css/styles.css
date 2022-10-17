@@ -66,7 +66,39 @@ h3{
     color: white;
 }
 
+.creatorsIntro, .creatorsCard{
+    display: flex;
+}
 
+.creatorsIntro{
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.creatorsIntro h2{
+    padding: 10px;
+    background-color: orange;
+}
+
+.creatorsCard{
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.card{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius:0 0 20px 20px;
+}
+
+.card-body{
+    border-radius: 0 0 10px 10px;
+    background: orange;
+
+}
+.card-text{
+    font-weight: 700;
+    color: white;
+}
 
 .greetings{
     background-color: #fff;
