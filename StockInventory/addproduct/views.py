@@ -47,7 +47,7 @@ class EditProduct(View):
 
         if form.is_valid():
             form.save()
-        return redirect(reverse('addproduct:edit_product'))
+        return redirect(reverse('addproduct:add_product'))
 
 class DeleteProduct(View):
     template = 'products/products.html'
