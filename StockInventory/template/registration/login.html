@@ -10,9 +10,11 @@
 
     <div class = "jumbotron loginContainer">
         <div class = "loginCard">
-            <h1>Please login</h1>
+            <h1>LOGIN</h1>
             {% if msg != '' %}
+            <div class = "errorMsg">
                 {{msg}}
+            </div>
             {% endif %}
             <form method="POST">
                  {% csrf_token %}
