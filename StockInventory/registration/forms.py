@@ -31,9 +31,3 @@ class RegisterEmployeeForm(ModelForm):
         self.instance.type = self.type
         self.fields['mobileNumber'].label = 'Mobile Number'
 
-
-class TransactionForm(ModelForm):
-
-    class Meta:
-        model = Transactions
-        fields = '__all__'
